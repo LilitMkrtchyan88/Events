@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Իրադարձությունների վերահսկման հավելված</string>
+    <string name="forget_password"><u><i>Մոռաց՞ել եք Ձեր գաղտնաբառը  </i></u></string>
+    <string name="create_account"><u>Անվճար գրանցում</u></string>
+    <string name="login_hintEditTextAndToast"><i><font size="17">Մուտքագրել  էլ․ փոստը</font></i></string>
+    <string name="password_hintEditTextAndToast"><i><font size="17">Մուտքագրել  գաղտնաբառ</font></i></string>
+    <string name="signIn">     Մուտք     </string>
+    <string name="userRegistrationPD_title"><font size="25">ԻՎՀ->Անվճար գրանցում</font></string>
+    <string name="userRegistrationPD_message"><i>Խնդրում ենք սպասել...</i></string>
+    <string name="subIntent">-->></string>
+
+
+    <string name="registrationUser_intentName">Անվճար գրանցում</string>
+    <string name="registrationUser_repeatPassword_hint"><i><font size="17">Կրկնել գաղտնաբառը</font></i></string>
+    <string name="registrationUser_nikname_hint"><i><font size="17">Մուտքագրել մականուն</font></i></string>
+    <string name="registrationUser_negativeButton">   Փակել   </string>
+    <string name="registrationUser_positiveButton">   Գրանցել   </string>
+    <string name="registrationUser_clipPicture"><i><font size="17">Կցել նկարը</font></i></string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="sendEmail_positiveButton">Ուղարկել  էլ․  փոստին</string>
+    <string name="sendEmail_negativeButton">Փակել</string>
+
+    <string name="fotgotPasswordPage_hintTV"><i><font size="17">Մուտքագրել այն էլ․ փոստը, որով գրանցվել եք</font></i></string>
+
+    <string name="falseRepeatPassword"><i><font size="12">Սխալ կրկնվող գաղտնաբառ</font></i></string>
+
+
+
+    <string name="email_subject">Իրադարձությունների վերահսկում - ուղարկված է MobileApp-ից"</string>
+    <string name="emailText1_forgotPassword">Բարև Ձեզ, Դուք դիմել եք Ձեր Event Tracker APP էջ մուտք գործելու նպատակով նոր գաղտնաբառ               "ստանալու համար։ Ձեր էջ մուտք գործելու համար ավտոմատացված գեներացվել է մեկանգամյա օգտագործման նոր գաղտնաբառ։ Եթե այս նամակը ստացել եք պատահմամբ՝ խնդրում եմ անտեսել։</string>
+
+    <string name="emailText2_forgotPassword">Գաղտնաբառ՝         </string>
+    <string name="emailText_registrationUser">Շնորհավորում ենք, Դուք հաջողությամբ գրանցվել եք "Իրադարձությունների վերահսկում" Բջջային հավելվածում։</string>
+
+
+
+</resources>
