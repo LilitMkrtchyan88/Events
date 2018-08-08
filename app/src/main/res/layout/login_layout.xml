@@ -5,9 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:weightSum="13"
-    android:background="@mipmap/sky"
-    >
+    android:weightSum="13">
 
     <TextView
         android:layout_width="match_parent"
@@ -37,7 +35,8 @@
             />
 
         <EditText
-            android:id="@+id/login_email_et"
+            android:paddingLeft="10dp"
+            android:id="@+id/login_username_et"
             android:inputType="textEmailAddress"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -51,7 +50,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:src="@mipmap/delete_email"
-            android:onClick="clearEmailPasswordFilds_EditText"
+            android:onClick="clearUsernamePasswordFilds"
             android:background="@color/colorBlue"
             />
     </LinearLayout>
@@ -67,23 +66,19 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:weightSum="28"
-        >
-
+        android:weightSum="28">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
-
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:src="@mipmap/lock_password"
-            android:background="@color/colorBlue"
-            />
-
+            android:background="@color/colorBlue"/>
         <EditText
+            android:paddingLeft="10dp"
             android:id="@+id/login_password_et"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -91,9 +86,7 @@
             android:background="@color/colorBlue"
             android:hint="@string/password_hintEditTextAndToast"
             android:textColorHint="@color/colorGrey"
-            android:inputType="textPassword"
-            />
-
+            android:inputType="textPassword"/>
         <ImageView
             android:id="@+id/login_password_iv"
             android:layout_width="0dp"
@@ -101,14 +94,10 @@
             android:layout_weight="2"
             android:src="@mipmap/eye_password_close"
             android:background="@color/colorBlue"/>
-
     </LinearLayout>
-
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        />
-
+        android:layout_height="20dp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -118,14 +107,10 @@
         android:background="@color/colorRose"
         android:textSize="18dp"
         android:text="@string/signIn"
-        android:onClick="signInAccount"
-        />
-
+        android:onClick="signInAccount"/>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="12dp"
-        />
-
+        android:layout_height="12dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -134,26 +119,20 @@
         android:textColor="@color/colorPrimary"
         android:layout_gravity="end"
         android:text="@string/forget_password"
-        android:onClick="forgotAndGiveNewPassword"
-        />
-
+        android:onClick="forgotAndGiveNewPassword"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:gravity="center"
-        >
-
+        android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:gravity="center"
             android:textColor="@color/colorBlack"
-            android:text="Չուն՞եք հաշիվ - "
-            />
-
+            android:text="Չուն՞եք հաշիվ - "/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -161,9 +140,7 @@
             android:gravity="center"
             android:textColor="@color/colorPrimary"
             android:text="@string/create_account"
-            android:onClick="registrationNewUser"
-            />
-
+            android:onClick="registrationNewUser"/>
     </LinearLayout>
 
 </LinearLayout>

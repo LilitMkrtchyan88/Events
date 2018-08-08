@@ -1,315 +1,189 @@
 package android.lilit.events;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.lilit.events.apiservices.ApiServiceUserLogin;
-import android.lilit.events.clients.ApiClient;
-import android.lilit.events.models.RegistrationLoginUpdateUserResponseModel;
-import android.os.Bundle;
-//import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
-import android.view.MotionEvent;
+import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import java.net.InetAddress;
 
-public class    MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
+    private boolean login_status = false;
     private EditText login_email_et, login_password_et;
     private ImageView login_password_iv;
     private ProgressDialog progressDialog;
 
+    private EditText searchEvent_et;
+    private LinearLayout notification_ll, message_ll, event_image_ll;
+    private TextView notification_count_tv, message_count_tv;
+    private ImageView onePoint_iv, twoPoint_iv, threePoint_iv, fourPoint_iv, fivePoint_iv, sixPoint_iv, sevenPoint_iv, eightPoint_iv;
+    private ListView myThemeEvents_lv;
+    private String searchEvent, notification_count, message_count;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_activity_main);
+        setContentView(R.layout.main_activity_layout);
 
-/*      initialize */
-        login_email_et = (EditText) findViewById(R.id.login_email_et);
-        login_password_et = (EditText) findViewById(R.id.login_password_et);
-        login_password_iv = (ImageView) findViewById(R.id.login_password_iv);
+        /*     for not changed window/view size - The problem is related to the soft keyboard     */
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
-/*      touch in 'eye' button and hold a finger - the password show as text('eye_password_open' mipmap resource) and
-        * after releasing the finger- again, change it as textPassword ('eye_password_close' mipmap resource) */
-        login_password_iv.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                switch (motionEvent.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        login_password_et.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                        login_password_iv.setImageResource(R.mipmap.eye_password_open);
-                        return true;
-                    case MotionEvent.ACTION_UP:
-                        login_password_et.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                        login_password_iv.setImageResource(R.mipmap.eye_password_close);
-                        return true;
-                }
-                return false;
-            }
-        });
+        /*     initialize     */
+        searchEvent_et = (EditText) findViewById(R.id.searchEvent_et);
+        notification_ll = (LinearLayout) findViewById(R.id.notification_ll);
+        message_ll = (LinearLayout) findViewById(R.id.message_ll);
+        event_image_ll = (LinearLayout) findViewById(R.id.event_image_ll);
+        notification_count_tv = (TextView) findViewById(R.id.notification_count_tv);
+        message_count_tv = (TextView) findViewById(R.id.message_count_tv);
+
+        onePoint_iv = (ImageView) findViewById(R.id.onePoint_iv);
+        twoPoint_iv = (ImageView) findViewById(R.id.twoPoint_iv);
+        threePoint_iv = (ImageView) findViewById(R.id.threePoint_iv);
+        fourPoint_iv = (ImageView) findViewById(R.id.fourPoint_iv);
+        fivePoint_iv = (ImageView) findViewById(R.id.fivePoint_iv);
+        sixPoint_iv = (ImageView) findViewById(R.id.sixPoint_iv);
+        sevenPoint_iv = (ImageView) findViewById(R.id.sevenPoint_iv);
+        eightPoint_iv = (ImageView) findViewById(R.id.eightPoint_iv);
+        myThemeEvents_lv = (ListView) findViewById(R.id.myThemeEvents_lv);
 
 
-    }
-
-    /*  onClick clear texts of username/email and password fields ('delete_email' mipmap resource) */
-    public void clearEmailPasswordFilds_EditText(View view) {
-        clearEmailAndPasswordFilds();
-    }
-
-    /*  this method used to clear texts of username/email and password fields ('delete_email' mipmap resource) */
-    public void clearEmailAndPasswordFilds() {
-        login_email_et.setText("");
-        login_password_et.setText("");
-    }
-
-    //Registration_User-um e
-
-/*  this method used to send user registration data to server or our local server
-    * @param username
-    * @param password */
-
-    /*public void insertUserData(String username, String password){
-        ApiServiceUserRegistration apiService = ApiClient.getClient().create(ApiServiceUserRegistration.class);
-        Call<RegistrationLoginUpdateUserResponseModel> call = apiService.registrationUserData(username, password);
-        call.enqueue(new Callback<RegistrationLoginUpdateUserResponseModel>() {
-            @Override
-            public void onResponse(Call<RegistrationLoginUpdateUserResponseModel> call, Response<RegistrationLoginUpdateUserResponseModel> response) {
-
-                RegistrationLoginUpdateUserResponseModel insertUserResponseModel = response.body();
-
-                //check the status code
-                if(insertUserResponseModel.getStatus()==1){
-                    Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-                }else{
-                    Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-                }
-            }
-            @Override
-            public void onFailure(Call<RegistrationLoginUpdateUserResponseModel> call, Throwable t) {
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-            }
-        });
-    }*/
+        /*if (isInternetAvailable()){}
+        else{
+            Toast.makeText(this, "Internet կապի բացակայություն", Toast.LENGTH_SHORT).show();
+        }*/
 
 
-   /* UpdateForgotPassword-um e
-   * *//*  this method used to send user updatable data to server or our local server
-        * @param username
-        * @param password *//*
-    public void changUserData(String username, String password){
-        ApiServiceUserUpdateNewAutogeneratedPassword_ForgotPassword apiService = ApiClient.getClient().create(ApiServiceUserUpdateNewAutogeneratedPassword_ForgotPassword.class);
-        Call<RegistrationLoginUpdateUserResponseModel> call = apiService.updateUserData(username, password);
-        call.enqueue(new Callback<RegistrationLoginUpdateUserResponseModel>() {
-            @Override
-            public void onResponse(Call<RegistrationLoginUpdateUserResponseModel> call, Response<RegistrationLoginUpdateUserResponseModel> response) {
-
-                RegistrationLoginUpdateUserResponseModel insertUserResponseModel = response.body();
-
-                *//* check the status code *//*
-                if(insertUserResponseModel.getStatus()==1){
-                    Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-                }else{
-                    Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-                }
-            }
-            @Override
-            public void onFailure(Call<RegistrationLoginUpdateUserResponseModel> call, Throwable t) {
-                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-            }
-        });
-    }*/
-
-    /*  onClick generation new random password and it automaticaly sended to email of user */
-    public void forgotAndGiveNewPassword(View view) {
-
-        Intent i = new Intent(this, UpdateForgotPassword_User.class);
-        i.putExtra("forgotPasswordEmail", login_email_et.getText().toString());
-        startActivity(i);
-    }
-
-    /*  onClick generation new random password and it automaticaly sended to email of user */
-    public void registrationNewUser(View view) {
-        clearEmailAndPasswordFilds();
-        Intent i = new Intent(getApplicationContext(), Registration_User.class);
-        startActivity(i);
-
-        /*Thread thread2 = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-
-                Handler mainHandler = new Handler(getApplicationContext().getMainLooper());
-                Runnable myRunnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent i = new Intent(getApplicationContext(), Registration_User.class);
-                        startActivity(i);
-                    }
-                mainHandler.post(myRunnable);
-                };*/
 
 
-    }
+        if (login_status){
 
-/*  onClick generation new random password and it automaticaly sended to email of user */
-    /*public void registrationNewUser(View view) {
-        clearEmailAndPasswordFilds();
-        final boolean[] addUser = new boolean[1];
+            //username-n ukharkel server
+            final String[] myEvents_data = {"event 1", "event 2", "event 3", "event 4", "event 5", "event 6", "event 7", "event 8"};
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myEvents_data);
+            myThemeEvents_lv.setAdapter(adapter);
 
-        //Intent i = new Intent(this, Registration_User.class);
-        //startActivity(i);
+            //if ete chkardacac notification unem
+            notification_ll.setBackground(getResources().getDrawable(R.drawable.bell_circle));
+            notification_count_tv.setText(notification_count);
+            //if ete chkardacac message unem
+            message_ll.setBackground(getResources().getDrawable(R.drawable.message_circle));
+            message_count_tv.setText(message_count);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        view = inflater.inflate(R.layout.layout_registration_user, null);
-        builder.setView(view);
-
-        final EditText username_etPD = (EditText)findViewById(R.id.username_etPD);
-        final EditText password_etPD = (EditText)findViewById(R.id.password_etPD);
-
-        final String username = username_etPD.getText().toString();
-        final String password = password_etPD.getText().toString();
-
-        builder.setPositiveButton(R.string.userRegistrationPD_positiveButton, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                if (TextUtils.isEmpty(username)) {
-                    username_etPD.setBackgroundColor(getResources().getColor(R.color.colorRose));
-                    Toast.makeText(MainActivity.this, R.string.login_hintEditTextAndToast, Toast.LENGTH_SHORT).show();
-                    addUser[0] = true;
-                } else if (TextUtils.isEmpty(password)) {
-                    password_etPD.setBackgroundColor(getResources().getColor(R.color.colorRose));
-                    Toast.makeText(MainActivity.this, R.string.password_hintEditTextAndToast, Toast.LENGTH_SHORT).show();
-                    addUser[0] = true;
-
-                } else {
-                    username_etPD.setBackgroundColor(getResources().getColor(R.color.colorBlue));
-                    password_etPD.setBackgroundColor(getResources().getColor(R.color.colorBlue));
-                    insertUserData(username, MD5.md5Custom(password));
-                    addUser[0] = false;
-                    //dialogInterface.dismiss();
-
-                    progressDialog = new ProgressDialog(MainActivity.this);
-                    progressDialog.setTitle(R.string.userRegistrationPD_message);
-                    progressDialog.setMessage("Խնդրում ենք սպասել․․․");  //?????????????string-eric chi ashkhatum vor kanchum enq
-                    progressDialog.show();
-                }
-                //dialogInterface.dismiss();
-            }
-        });
-        builder.setNegativeButton("Cancel",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,
-                                        int id) {
-                        addUser[0] = false;
-                        dialog.cancel();
-                    }
-                });
-        final AlertDialog alertClient = builder.create();
-        alertClient.show();
-
-        alertClient
-                .setOnDismissListener(new DialogInterface.OnDismissListener() {
-
-                    @Override
-                    public void onDismiss(DialogInterface dialog) {
-                        //If the error flag was set to true then show the dialog again
-                        if (addUser[0] == true) {
-                            alertClient.show();
-                        } else {
-                            return;
-                        }
-
-                    }
-                });
-
-      *//*  builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            public void onDismiss(DialogInterface dialog) {
-                if (isEmptyEditText == true) {
-                    insertUserData(username, MD5.md5Custom(password));//.show();
-                } else {
-                    return;
-                }
-
-            }
-        });*//*
-
-       // builder.show();
-
-
-    }*/
-
-
-    public void signInAccount(View view) {
-
-        String login = login_email_et.getText().toString();
-        String pass = login_password_et.getText().toString();
-
-        ApiServiceUserLogin apiServiceLogin = ApiClient.getClient().create(ApiServiceUserLogin.class);
-        Call<RegistrationLoginUpdateUserResponseModel> call =  apiServiceLogin.loginUserData(login,MD5.md5Custom(pass));
-        call.enqueue(new Callback<RegistrationLoginUpdateUserResponseModel>() {
-            @Override
-            public void onResponse(Call<RegistrationLoginUpdateUserResponseModel> call, Response<RegistrationLoginUpdateUserResponseModel> response) {
-                RegistrationLoginUpdateUserResponseModel r = response.body();
-
-                if(r.getStatus()== 1){
-                    // clearEmailAndPasswordFilds();
-                    //Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(MainActivity.this, "uraaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
-
-                }else{
-                    Toast.makeText(MainActivity.this, "lav eli", Toast.LENGTH_SHORT).show();
-
-                }
-                    /*if(response.body().status == 1){
-                        status.setText("NIKOL" *//**//**//**//*+ r.content.token*//**//**//**//*);
-                    }else{
-                        status.setText(r.message+"nhghvhvkbhbm");
-                    }*/
-            }
-
-            @Override
-            public void onFailure(Call<RegistrationLoginUpdateUserResponseModel> call, Throwable t) {
-                Log.e("Nikol" , "Nikol");
-                //status.setText("something went wrong");
-            }
-        });
-    }
-
-    /*  public void lookAtAndClosePasswordFild_EditText(View view) {   //chi ashxatum es dzevov
-
-        //if(password_iv.getResources().equals(R.mipmap.eye_password_open)){
-        if (password_et.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
-            password_iv.setImageResource(R.mipmap.eye_password_close);
-            password_et.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            //password_et.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         } else {
-            password_iv.setImageResource(R.mipmap.eye_password_open);
-            //password_et.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            password_et.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-
-            //password_et.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-            //password_et.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            //null username-n ukharkel server
+            final String[] myEvents_data = {"event 1", "event 2", "event 3", "event 4", "event 5", "event 6", "event 7", "event 8"};
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myEvents_data);
+            myThemeEvents_lv.setAdapter(adapter);
         }
+
     }
-    */
+
+        public void openUserTotalPage(View view) {
+            if (login_status){
+                Intent totalPage = new Intent(this, UserTotalPage.class);
+                startActivity(totalPage);
+            } else {
+                Intent loginPage = new Intent(this, LoginPage.class);
+                startActivity(loginPage);
+            }
+        }
+
+        public void searchInAllEvents(View view) {
+            searchEvent = searchEvent_et.getText().toString();
+        }
+
+        public void seeNotifications(View view) {
+            if (login_status){
+                //Intent notificationPage = new Intent(this, NotificationPageIntent.class);
+                //startActivity(notificationPage);
+            } else {
+                Toast.makeText(this, "Դուք մուտք չեք գործել Ձեր անձնական էջ", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        public void seeMessages(View view) {
+            if (login_status){
+                //if chkardacac messagei county 0 che {}
+                //Intent messagePage = new Intent(this, MessagePageIntent.class);
+                //startActivity(messagePage);
+            } else {
+                Toast.makeText(this, "Դուք մուտք չեք գործել Ձեր անձնական էջ", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        public void seeEventInAll(View view) {
+        }
+
+        public void seeMyPage(View view) {
+            if (login_status){
+                //Intent myPage = new Intent(this, MyPageIntent.class);
+                //startActivity(myPage);
+            } else {
+                openLoginPage();
+            }
+        }
+
+        public void createNewEvent(View view) {
+            if (login_status){
+                //Intent newEventPage = new Intent(this, NewEventPage.class);
+                //startActivity(newEventPage);
+            } else {
+                openLoginPage();
+            }
+        }
+
+        public void seeMyCalendar(View view) {
+            if (login_status){
+                //Intent myCalendarPage = new Intent(this, MyCalendarPage.class);
+                //startActivity(myCalendarPage);
+            } else {
+                openLoginPage();
+            }
+        }
+
+        public void seeMyContacts(View view) {
+            if (login_status){
+                //Intent myContactsPage = new Intent(this, MyContactsPage.class);
+                //startActivity(myContactsPage);
+            } else {
+                openLoginPage();
+            }
+        }
+
+        public void seeMyEvent(View view) {
+            if (login_status){
+                //Intent myEventPage = new Intent(this, MyEventPage.class);
+                //startActivity(myEventPage);
+            } else {
+                openLoginPage();
+            }
+        }
+
+        public void openLoginPage(){
+            Intent loginPage = new Intent(this, LoginPage.class);
+            startActivity(loginPage);
+        }
+
+   /* public boolean isInternetAvailable() {
+        try {
+            InetAddress ipAddr = InetAddress.getByName("google.com");
+            //ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            //You can replace it with your name
+            return !ipAddr.equals("");
+
+        } catch (Exception e) {
+            return false;
+        }
+    }*/
 
 }
-
