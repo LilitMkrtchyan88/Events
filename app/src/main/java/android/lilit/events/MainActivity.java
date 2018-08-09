@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(seeEventIntent);
         }
 
+
         public void seeMyPage(View view) {
             if (login_status){
                 Intent myPageIntent = new Intent(this, MyPage.class);
@@ -168,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 openLoginPage();
             }
         }
-
+// յհըւհհըիւըհգըւ
         public void seeMyEvents(View view) {
             if (login_status){
                 Intent myEventsIntent = new Intent(this, MyEventsPage.class);
