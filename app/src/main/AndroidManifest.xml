@@ -20,12 +20,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserTotalPage" />
-        <activity android:name=".LoginPage"></activity>
-        <activity android:name=".UpdateForgotPasswordPage" />
-        <activity android:name=".RegistrationUserPage"/>
-        <activity android:name=".HelpPage"/>
-
+        <activity android:name=".Pages.UserTotalPage" />
+        <activity android:name=".Pages.LoginPage" />
+        <activity android:name=".Pages.UpdateForgotPasswordPage" />
+        <activity android:name=".Pages.RegistrationUserPage" />
+        <activity android:name=".Pages.HelpPage" />
+        <activity
+            android:name=".Pages.EventsPages.EventsListPage"
+            android:label="@string/title_activity_events_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Pages.NotificationsPage" />
+        <activity android:name=".Pages.MessagesPage" />
+        <activity android:name=".Pages.EventsPages.EventPage" />
+        <activity android:name=".Pages.MyPage" />
+        <activity android:name=".Pages.EventsPages.NewEventPage" />
+        <activity android:name=".Pages.CalendarPage" />
+        <activity android:name=".Pages.ContactsPage" />
+        <activity android:name=".Pages.EventsPages.MyEventsPage"></activity>
     </application>
 
 </manifest>

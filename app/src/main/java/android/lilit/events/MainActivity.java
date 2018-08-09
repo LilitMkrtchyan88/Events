@@ -2,6 +2,17 @@ package android.lilit.events;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.lilit.events.Pages.CalendarPage;
+import android.lilit.events.Pages.ContactsPage;
+import android.lilit.events.Pages.EventsPages.EventPage;
+import android.lilit.events.Pages.EventsPages.EventsListPage;
+import android.lilit.events.Pages.LoginPage;
+import android.lilit.events.Pages.MessagesPage;
+import android.lilit.events.Pages.EventsPages.MyEventsPage;
+import android.lilit.events.Pages.MyPage;
+import android.lilit.events.Pages.EventsPages.NewEventPage;
+import android.lilit.events.Pages.NotificationsPage;
+import android.lilit.events.Pages.UserTotalPage;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +24,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.net.InetAddress;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,9 +71,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Internet կապի բացակայություն", Toast.LENGTH_SHORT).show();
         }*/
 
-
-
-
         if (login_status){
 
             //username-n ukharkel server
@@ -100,12 +106,14 @@ public class MainActivity extends AppCompatActivity {
 
         public void searchInAllEvents(View view) {
             searchEvent = searchEvent_et.getText().toString();
+            Intent searchEventIntent = new Intent(this, EventsListPage.class);
+            startActivity(searchEventIntent);
         }
 
         public void seeNotifications(View view) {
             if (login_status){
-                //Intent notificationPage = new Intent(this, NotificationPageIntent.class);
-                //startActivity(notificationPage);
+                Intent notificationsPage = new Intent(this, NotificationsPage.class);
+                startActivity(notificationsPage);
             } else {
                 Toast.makeText(this, "Դուք մուտք չեք գործել Ձեր անձնական էջ", Toast.LENGTH_SHORT).show();
             }
@@ -113,21 +121,22 @@ public class MainActivity extends AppCompatActivity {
 
         public void seeMessages(View view) {
             if (login_status){
-                //if chkardacac messagei county 0 che {}
-                //Intent messagePage = new Intent(this, MessagePageIntent.class);
-                //startActivity(messagePage);
+                Intent messagesPage = new Intent(this, MessagesPage.class);
+                startActivity(messagesPage);
             } else {
-                Toast.makeText(this, "Դուք մուտք չեք գործել Ձեր անձնական էջ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Դուք Ձեր անձնական էջում չեք", Toast.LENGTH_SHORT).show();
             }
         }
 
         public void seeEventInAll(View view) {
+            Intent seeEventIntent = new Intent(this, EventPage.class);
+            startActivity(seeEventIntent);
         }
 
         public void seeMyPage(View view) {
             if (login_status){
-                //Intent myPage = new Intent(this, MyPageIntent.class);
-                //startActivity(myPage);
+                Intent myPageIntent = new Intent(this, MyPage.class);
+                startActivity(myPageIntent);
             } else {
                 openLoginPage();
             }
@@ -135,35 +144,35 @@ public class MainActivity extends AppCompatActivity {
 
         public void createNewEvent(View view) {
             if (login_status){
-                //Intent newEventPage = new Intent(this, NewEventPage.class);
-                //startActivity(newEventPage);
+                Intent newEventIntent = new Intent(this, NewEventPage.class);
+                startActivity(newEventIntent);
             } else {
                 openLoginPage();
             }
         }
 
-        public void seeMyCalendar(View view) {
+        public void seeCalendar(View view) {
             if (login_status){
-                //Intent myCalendarPage = new Intent(this, MyCalendarPage.class);
-                //startActivity(myCalendarPage);
+                Intent calendarIntent = new Intent(this, CalendarPage.class);
+                startActivity(calendarIntent);
             } else {
                 openLoginPage();
             }
         }
 
-        public void seeMyContacts(View view) {
+        public void seeContacts(View view) {
             if (login_status){
-                //Intent myContactsPage = new Intent(this, MyContactsPage.class);
-                //startActivity(myContactsPage);
+                Intent contactsIntent = new Intent(this, ContactsPage.class);
+                startActivity(contactsIntent);
             } else {
                 openLoginPage();
             }
         }
 
-        public void seeMyEvent(View view) {
+        public void seeMyEvents(View view) {
             if (login_status){
-                //Intent myEventPage = new Intent(this, MyEventPage.class);
-                //startActivity(myEventPage);
+                Intent myEventsIntent = new Intent(this, MyEventsPage.class);
+                startActivity(myEventsIntent);
             } else {
                 openLoginPage();
             }

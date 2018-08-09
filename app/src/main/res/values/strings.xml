@@ -33,6 +33,7 @@
     <string name="emailText2_forgotPassword">Գաղտնաբառ՝         </string>
     <string name="emailText_registrationUser">Շնորհավորում ենք, Դուք հաջողությամբ գրանցվել եք "Իրադարձությունների վերահսկում" Բջջային հավելվածում։</string>
     <string name="title_activity_main">Main</string>
+    <string name="title_activity_events_page">EventsPage</string>
 
 
 </resources>

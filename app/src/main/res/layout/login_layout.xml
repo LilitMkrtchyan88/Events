@@ -5,35 +5,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:weightSum="13">
-
+    android:weightSum="22">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
-
     <LinearLayout
+        android:id="@+id/username_ll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:weightSum="28"
-        >
-
+        android:background="@color/colorBlue">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
-
+            android:layout_weight="1"
+            android:background="@color/colorWhite"/>
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:src="@mipmap/envelope_email"
-            android:background="@color/colorBlue"
-            />
-
+            android:src="@mipmap/envelope_email"/>
         <EditText
             android:paddingLeft="10dp"
             android:id="@+id/login_username_et"
@@ -41,80 +36,119 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="22"
-            android:background="@color/colorBlue"
-            android:hint="@string/login_hintEditTextAndToast"
-            android:textColorHint="@color/colorGrey" />
-
+            android:hint="@string/login_hintEditTextAndToast"/>
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:src="@mipmap/delete_email"
-            android:onClick="clearUsernamePasswordFilds"
-            android:background="@color/colorBlue"
-            />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="12dp"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:weightSum="28">
+            android:onClick="clearUsernamePasswordFilds"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@color/colorWhite"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/falseUsername_tv"
+        android:paddingLeft="50dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textStyle="italic"
+        android:text="Սխալ էլ․ հասցե"
+        android:visibility="invisible"/>
+    <LinearLayout
+        android:id="@+id/password_ll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:weightSum="28"
+        android:background="@color/colorBlue">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"/>
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:src="@mipmap/lock_password"
-            android:background="@color/colorBlue"/>
+            android:src="@mipmap/lock_password"/>
         <EditText
             android:paddingLeft="10dp"
             android:id="@+id/login_password_et"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="22"
-            android:background="@color/colorBlue"
             android:hint="@string/password_hintEditTextAndToast"
-            android:textColorHint="@color/colorGrey"
             android:inputType="textPassword"/>
         <ImageView
             android:id="@+id/login_password_iv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:src="@mipmap/eye_password_close"
-            android:background="@color/colorBlue"/>
+            android:src="@mipmap/eye_password_close"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"/>
     </LinearLayout>
     <TextView
+        android:id="@+id/falsePassword_tv"
+        android:paddingLeft="50dp"
+        android:paddingBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="20dp"/>
-    <Button
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textStyle="italic"
+        android:text="Սխալ գաղտնաբառ"
+        android:visibility="invisible"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal"
+        android:weightSum="20">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@color/colorRose"
+            android:textSize="18dp"
+            android:text="@string/signIn"
+            android:onClick="signInAccount"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@color/colorRose"
+            android:textSize="18dp"
+            android:text="ելք"
+            android:onClick="closeLoginPage"/>
+    </LinearLayout>
+    <TextView
+        android:paddingTop="10dp"
+        android:paddingRight="5dp"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:background="@color/colorRose"
-        android:textSize="18dp"
-        android:text="@string/signIn"
-        android:onClick="signInAccount"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="12dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:textSize="17dp"
         android:textColor="@color/colorPrimary"
         android:layout_gravity="end"
@@ -123,12 +157,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="horizontal"
         android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:textSize="20dp"
             android:gravity="center"
             android:textColor="@color/colorBlack"
@@ -142,5 +176,4 @@
             android:text="@string/create_account"
             android:onClick="registrationNewUser"/>
     </LinearLayout>
-
 </LinearLayout>
