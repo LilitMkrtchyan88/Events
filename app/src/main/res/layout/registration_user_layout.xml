@@ -139,27 +139,27 @@
         android:gravity="center">
         <Button
 
-            android:onClick="registrationNewUser"
+            android:onClick="cancelPage"
             android:layout_marginLeft="30dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"
             android:textSize="18dp"
             android:background="@color/colorRose"
-            android:text="@string/registrationUser_positiveButton"/>
+            android:text="ելք"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"/>
         <Button
-            android:onClick="cancelPage"
+            android:onClick="registrationNewUser"
             android:layout_marginEnd="30dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="6"
             android:textSize="18dp"
             android:background="@color/colorRose"
-            android:text="Ելք"
+            android:text="Գրանցել"
             android:layout_marginRight="30dp"/>
 
     </LinearLayout>

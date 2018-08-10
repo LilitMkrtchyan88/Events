@@ -121,13 +121,13 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="7"
+            android:layout_weight="5"
             android:layout_gravity="center"
             android:gravity="center"
             android:background="@color/colorRose"
             android:textSize="18dp"
-            android:text="@string/signIn"
-            android:onClick="signInAccount"/>
+            android:text="Ելք"
+            android:onClick="closeLoginPage"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -135,13 +135,13 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_weight="7"
             android:layout_gravity="center"
             android:gravity="center"
             android:background="@color/colorRose"
             android:textSize="18dp"
-            android:text="ելք"
-            android:onClick="closeLoginPage"/>
+            android:text="Մուտք"
+            android:onClick="signInAccount"/>
     </LinearLayout>
     <TextView
         android:paddingTop="10dp"

@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String URL  = "http://192.168.42.54:8080/";//"http://192.168.42.247/EventTracker/";//;   //"http://192.168.6.131/";//"http://192.168.6.134/EventTracker/";//;
+    public static final String URL  = "http://192.168.6.51:8080/";//"http://192.168.42.247/EventTracker/";//;   //"http://192.168.6.131/";//"http://192.168.6.134/EventTracker/";//;
     public static Retrofit RETROFIT = null;
 
     public static Retrofit getClient(){

@@ -128,7 +128,7 @@ public class LoginPage extends AppCompatActivity {
         }
 
     }
-//jcvb,xjcv,xc0000
+//jcvb,xjcv,xc0000fgbxdfgx
     //onClick
     public void closeLoginPage(View view) {
         this.finish();
